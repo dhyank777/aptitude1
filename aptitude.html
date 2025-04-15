@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude - Problems on Trains</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        header {
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #0055a5;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 40px;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer, .explanation {
+            display: none;
+            margin-top: 10px;
+        }
+        .explanation {
+            background: #eef;
+            padding: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aptitude - Problems on Trains</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Aptitude</a>
+        <a href="#">Verbal Ability</a>
+        <a href="#">Reasoning</a>
+    </nav>
+    <div class="container">
+
+        <!-- Question 1 -->
+        <div class="question">
+            <h2>Question 1:</h2>
+            <p>A train 240 m long is running at 60 km/hr. In what time will it pass a pole?</p>
+            <div class="options" id="options1">
+                <label><input type="radio" name="q1" value="A"> A. 10 sec</label>
+                <label><input type="radio" name="q1" value="B"> B. 12 sec</label>
+                <label><input type="radio" name="q1" value="C"> C. 14 sec</label>
+                <label><input type="radio" name="q1" value="D"> D. 16 sec</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'C', 'answer1', 'explanation1', 'options1')">Show Answer</button>
+            <div class="answer" id="answer1">
+                <strong>Answer: C. 14 sec</strong>
+            </div>
+            <div class="explanation" id="explanation1">
+                <strong>Explanation:</strong> Speed = 60 km/hr = (60 * 1000)/3600 m/sec = 16.67 m/sec<br>
+                Time = Distance / Speed = 240 / 16.67 ≈ 14.4 sec
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h2>Question 2:</h2>
+            <p>A train 360 m long is running at a speed of 45 km/hr. How long will it take to cross a platform 140 m long?</p>
+            <div class="options" id="options2">
+                <label><input type="radio" name="q2" value="A"> A. 30 sec</label>
+                <label><input type="radio" name="q2" value="B"> B. 32 sec</label>
+                <label><input type="radio" name="q2" value="C"> C. 36 sec</label>
+                <label><input type="radio" name="q2" value="D"> D. 40 sec</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'D', 'answer2', 'explanation2', 'options2')">Show Answer</button>
+            <div class="answer" id="answer2">
+                <strong>Answer: D. 40 sec</strong>
+            </div>
+            <div class="explanation" id="explanation2">
+                <strong>Explanation:</strong> Total distance = 360 + 140 = 500 m<br>
+                Speed = 45 km/hr = (45 * 1000)/3600 = 12.5 m/sec<br>
+                Time = 500 / 12.5 = 40 sec
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkAnswer(questionName, correctValue, answerId, explanationId, optionsId) {
+            const options = document.getElementsByName(questionName);
+            let selected = null;
+            options.forEach(opt => {
+                if (opt.checked) {
+                    selected = opt.value;
+                }
+            });
+            const labels = document.querySelectorAll(`#${optionsId} label`);
+            labels.forEach(label => {
+                const input = label.querySelector('input');
+                label.classList.remove('correct', 'incorrect');
+                if (input.value === correctValue) {
+                    label.classList.add('correct');
+                } else if (input.checked) {
+                    label.classList.add('incorrect');
+                }
+            });
+            document.getElementById(answerId).style.display = 'block';
+            document.getElementById(explanationId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
